@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^customer/', include('ubercustomer.urls')),
     url(r'^driver/', include('uberdriver.urls')),
     url(r'^home/', views.welcome_user, name="joint"),
+     url(r'^accounts/', include('registration.backends.simple.urls')),
 ]

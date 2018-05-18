@@ -1,7 +1,4 @@
-{% autoescape off %}
-Hi {{ user.username }},
+<h1>Hello {{name}}</h1>
 
-Please click on the link below to confirm your registration:
-
-http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
-{% endautoescape %}
+<h5>Welcome to the Neighbours. Start sharing rides now!
+</h5>
