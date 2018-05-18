@@ -1,0 +1,22 @@
+{% extends 'driver/base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4 col-md-offset-4">
+            <h3>Create Profile</h3>
+                {{form.media}}
+                {% block styles %} {% bootstrap_css %}
+                  <link rel="stylesheet" href="#"> {% endblock %}
+                
+                <form action="{% url 'carprofile' %}">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                
+                </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

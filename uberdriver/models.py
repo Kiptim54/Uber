@@ -6,6 +6,8 @@ class Car(models.Model):
     Brand=models.CharField(max_length=50)
     numberplate=models.CharField(max_length=50)
     seats=models.IntegerField()
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.Brand
@@ -27,8 +29,9 @@ class Driver_profile(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     name=models.CharField(max_length=50)
     car=models.ForeignKey(Car)
-    pickup=models.ForeignKey(Location)
+    # pickup=models.ForeignKey(Location)
     driver_destination=models.ForeignKey(Destination)
+    phonenumber=models.IntegerField()
     
 
     def __str__(self):
