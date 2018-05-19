@@ -16,7 +16,7 @@ def home_page(request):
     return HttpResponse("Hello Driver welcome to uber")
 
 def create_profile(request):
-    current_user = request.user.id
+    current_user = request.user
     print("hello")
     if request.method == 'POST':
         form = Create_Profile(request.POST, request.FILES)
@@ -24,21 +24,22 @@ def create_profile(request):
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
-            print("hello")
-            print(profile)
+            return redirect('/driver/profile/car')
+            
     else:
         form =Create_Profile()
     return render(request, 'driver/profile_edit.html', {"form": form})
 
 def car_profile(request):
-    current_user = request.user.id
+    current_user = request.user
+    print(current_user)
     if request.method == 'POST':
         form = Car_profile(request.POST)
+        if form.is_valid():
+            car= form.save(commit=False)
+            car.owner=current_user
+            car.save()
         
-        car= form.save()
-        car.profile=current_user.id
-        car.save()
-        return redirect('/driver/profile')
     else:
         form =Car_profile()
     return render(request, 'driver/car_edit.html', {"form": form})

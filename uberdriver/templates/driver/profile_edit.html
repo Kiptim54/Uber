@@ -10,7 +10,7 @@
                 {% block styles %} {% bootstrap_css %}
                   <link rel="stylesheet" href="#"> {% endblock %}
                 
-                <form action="{% url 'createprofile' %}">
+                <form action="{% url 'createprofile' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     <input type="submit" value="Post">

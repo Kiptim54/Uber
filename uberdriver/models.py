@@ -20,7 +20,7 @@ class Driver_profile(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     name=models.CharField(max_length=50)
     # pickup=models.ForeignKey(Location)
-    # driver_destination=models.ForeignKey(Destination)
+    driver_destination=models.ForeignKey(Destination)
     phonenumber=models.IntegerField()
     
     
@@ -35,7 +35,10 @@ class Car(models.Model):
     Brand=models.CharField(max_length=50)
     numberplate=models.CharField(max_length=50)
     seats=models.IntegerField()
-    owner=models.ForeignKey(Driver_profile)
+    owner=models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def save_car(self):
+        return self.save()
     
 
     def __str__(self):

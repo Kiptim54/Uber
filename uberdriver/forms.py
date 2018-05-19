@@ -14,7 +14,7 @@ class SignUpForm(UserCreationForm):
 class Create_Profile(forms.ModelForm):
     class Meta:
         model=Driver_profile
-        fields=['name', 'phonenumber']
+        fields=['name', 'phonenumber', 'driver_destination']
 
 class Car_profile(forms.ModelForm):
     class Meta:
