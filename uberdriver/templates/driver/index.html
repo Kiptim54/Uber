@@ -1,4 +1,19 @@
 {% extends 'driver/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
 {% block content %}
+{% block styles %}
+{% bootstrap_css%}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+{% endblock %}
 <h2> Hello driver, welcome!</h2>
+
+<div class="driver_options">
+        <hr>
+    <a href="">See scheduled rides</a> | <a href="">Change scheduled rides</a> | <a href="{% url 'createprofile' %}">Edit Profile</a> | <a href="{% url 'carprofile' %}">Edit car details</a>
+    <hr>
+  
+  
+</div>
 {% endblock %}

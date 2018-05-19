@@ -28,7 +28,6 @@ def create_profile(request):
             return redirect('carprofile')
             
     else:
-        raise("You already have an account!")
         form =Create_Profile()
     return render(request, 'driver/profile_edit.html', {"form": form})
 
