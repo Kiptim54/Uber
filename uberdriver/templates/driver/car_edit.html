@@ -10,11 +10,12 @@
                 {% block styles %} {% bootstrap_css %}
                   <link rel="stylesheet" href="#"> {% endblock %}
                 
-                <form action="{% url 'carprofile' %}">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
-                <input type="submit" value="Submit">
-                </form>
+                  <form  action="{%url 'carprofile'%}" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                
+                    {% bootstrap_form form%}
+                    <input type="submit" class="btn btn-success btn-lg" value="Post">
+                  </form>
         </div>
     </div>
 </div>

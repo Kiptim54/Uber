@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ubercustomer.apps.UbercustomerConfig',
     'uberdriver.apps.UberdriverConfig',
-    'uber',
+    
     'bootstrap3',
 ]
 

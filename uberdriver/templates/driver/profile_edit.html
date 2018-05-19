@@ -13,6 +13,7 @@
                 <form action="{% url 'createprofile' %}">
                     {% csrf_token %}
                     {% bootstrap_form form %}
+                    <input type="submit" value="Post">
                 
                 </form>
         </div>
