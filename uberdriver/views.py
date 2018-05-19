@@ -10,10 +10,11 @@ from .forms import Create_Profile, Car_profile
 
 @login_required
 def home_page(request):
+    title="Home | Driver"
     '''
     function for the landing page of the driver
     '''
-    return HttpResponse("Hello Driver welcome to uber")
+    return render( request, 'driver/index.html', {"title":title})
 
 def create_profile(request):
     current_user = request.user
@@ -24,9 +25,10 @@ def create_profile(request):
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
-            return redirect('/driver/profile/car')
+            return redirect('carprofile')
             
     else:
+        raise("You already have an account!")
         form =Create_Profile()
     return render(request, 'driver/profile_edit.html', {"form": form})
 
@@ -39,6 +41,7 @@ def car_profile(request):
             car= form.save(commit=False)
             car.owner=current_user
             car.save()
+            return redirect('home_driver')
         
     else:
         form =Car_profile()
