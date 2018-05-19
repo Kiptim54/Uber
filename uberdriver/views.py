@@ -6,7 +6,8 @@ from .forms import SignUpForm
 from .email import send_welcome_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import Create_Profile, Car_profile
+from .forms import Create_Profile, Car_profile, Destination_form
+from .models import Driver_profile
 
 @login_required
 def home_page(request):
@@ -46,7 +47,30 @@ def car_profile(request):
         form =Car_profile()
     return render(request, 'driver/car_edit.html', {"form": form})
     
+def create_destination(request):
+    '''
+    function used by the driver to set their destination
+    '''
 
+    title="Ride | Destination"
+    current_user=request.user
+    current_user.id=request.user.id
+    print(current_user.id)
+    print("hello from destination")
+    driver_user=Driver_profile.objects.get(user=current_user.id)
+    print(driver_user)
+    
+    if request.method=='POST':
+        form=Destination_form(request.POST)
+        if form.is_valid():
+            destination=form.save(commit=False)
+            destination.driver=driver_user
+            destination.save()
+            return redirect('home_driver')
+            
+    else:
+        form=Destination_form()
+    return render(request, 'driver/destination.html', {"form":form, "title":title})
 
 # def sign_up(request):
 #     if request.method=='POST':

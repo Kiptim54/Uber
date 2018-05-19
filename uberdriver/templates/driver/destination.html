@@ -1,0 +1,24 @@
+{% extends 'driver/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+        <div class="row">
+    
+            <div class="col-md-4 col-md-offset-4">
+
+                    {{form.media}}
+                    {% block styles %} {% bootstrap_css %}
+                      <link rel="stylesheet" href="#"> {% endblock %}
+                      <h3>Set your next destination</h3>
+                    <form action="{% url 'driverdestination' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <input type="submit" value="Schedule">
+                    
+                    </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

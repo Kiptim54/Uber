@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 
+
 class Location(models.Model):
     Longitude=models.IntegerField()
     latitude=models.IntegerField()
@@ -10,17 +11,13 @@ class Location(models.Model):
     def __int__(self):
         return self.Longitude
 
-class Destination(models.Model):
-    name=models.CharField(max_length=50)
 
-    def __str__(self):
-        return self.name
 
 class Driver_profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     name=models.CharField(max_length=50)
     # pickup=models.ForeignKey(Location)
-    driver_destination=models.ForeignKey(Destination)
+    
     phonenumber=models.IntegerField()
     
     
@@ -29,6 +26,14 @@ class Driver_profile(models.Model):
 
     def __str__(self):
         return self.name
+
+class Destination(models.Model):
+    destination=models.CharField(max_length=50)
+    leaving_time=models.DateTimeField()
+    driver=models.ForeignKey(Driver_profile)
+
+    def __str__(self):
+        return self.destination
 
 # Create your models here.
 class Car(models.Model):
