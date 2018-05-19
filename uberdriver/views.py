@@ -19,14 +19,17 @@ def home_page(request):
 
 def create_profile(request):
     current_user = request.user
+    current_user.id=request.user.id
+    car=Car.objects.get(owner=current_user.id)
     print("hello")
     if request.method == 'POST':
         form = Create_Profile(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = current_user
+            profile.car=car
             profile.save()
-            return redirect('carprofile')
+            return redirect('home_driver')
             
     else:
         form =Create_Profile()
@@ -41,7 +44,7 @@ def car_profile(request):
             car= form.save(commit=False)
             car.owner=current_user
             car.save()
-            return redirect('home_driver')
+            return redirect('createprofile')
         
     else:
         form =Car_profile()

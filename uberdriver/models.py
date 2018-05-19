@@ -11,13 +11,26 @@ class Location(models.Model):
     def __int__(self):
         return self.Longitude
 
+# Create your models here.
+class Car(models.Model):
+    Brand=models.CharField(max_length=50)
+    numberplate=models.CharField(max_length=50)
+    seats=models.IntegerField()
+    owner=models.OneToOneField(User,on_delete=models.CASCADE)
+
+    def save_car(self):
+        return self.save()
+    
+
+    def __str__(self):
+        return self.Brand
 
 
 class Driver_profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     name=models.CharField(max_length=50)
     # pickup=models.ForeignKey(Location)
-    
+    car=models.ForeignKey(Car)
     phonenumber=models.IntegerField()
     
     
@@ -43,18 +56,5 @@ class Destination(models.Model):
     def __str__(self):
         return self.destination
 
-# Create your models here.
-class Car(models.Model):
-    Brand=models.CharField(max_length=50)
-    numberplate=models.CharField(max_length=50)
-    seats=models.IntegerField()
-    owner=models.OneToOneField(User,on_delete=models.CASCADE)
-
-    def save_car(self):
-        return self.save()
-    
-
-    def __str__(self):
-        return self.Brand
 
 
