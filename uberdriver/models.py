@@ -32,6 +32,14 @@ class Destination(models.Model):
     leaving_time=models.DateTimeField()
     driver=models.ForeignKey(Driver_profile)
 
+    def save_destination(self):
+        self.save()
+
+    @classmethod
+    def display_destinations(cls, driver):
+        destinations=cls.objects.all().filter(driver__user=driver)
+        return destinations
+
     def __str__(self):
         return self.destination
 

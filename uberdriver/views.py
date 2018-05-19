@@ -7,7 +7,7 @@ from .email import send_welcome_email
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import Create_Profile, Car_profile, Destination_form
-from .models import Driver_profile
+from .models import Driver_profile, Destination, Car
 
 @login_required
 def home_page(request):
@@ -71,6 +71,15 @@ def create_destination(request):
     else:
         form=Destination_form()
     return render(request, 'driver/destination.html', {"form":form, "title":title})
+
+
+def display_destinations(request):
+    title="Ride | Destinations "
+    current_user=request.user
+    driver=request.user.id
+    schedules=Destination.display_destinations(driver)
+    return render(request, 'driver/schedule.html', {"schedules":schedules, "title":title})
+
 
 # def sign_up(request):
 #     if request.method=='POST':

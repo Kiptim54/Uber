@@ -1,0 +1,28 @@
+{% extends 'driver/base.html' %} 
+{% load bootstrap3 %} 
+{% block content %}
+{% block styles %}
+{% bootstrap_css %}
+{% endblock %}
+<div class="container">
+    <div class="row">
+
+        <h1 class="text-center">Your Scheduled rides</h1>
+
+        <div class="col-md-4">
+            {% for schedule in schedules %}
+
+
+            <h2>{{schedule.destination }}</h2>
+            <p>{{schedule.leaving_time }}</p>
+            <p>{{schedule.driver.name }}</p>
+            
+        </div>
+        {% endfor%}
+    </div>
+</div>
+
+
+
+
+{% endblock %}
