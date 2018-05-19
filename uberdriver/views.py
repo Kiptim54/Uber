@@ -28,13 +28,14 @@ def create_profile(request):
     return render(request, 'driver/profile_edit.html', {"form": form})
 
 def car_profile(request):
-    current_user = request.user
+    current_user = request.user.id
     if request.method == 'POST':
         form = Car_profile(request.POST)
         if form.is_valid():
             car= form.save()
             car.user=current_user
             car.save()
+            return redirect('/driver/profile')
     else:
         form =Car_profile()
     return render(request, 'driver/car_edit.html', {"form": form})

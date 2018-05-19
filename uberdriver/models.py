@@ -1,16 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-class Car(models.Model):
-    Brand=models.CharField(max_length=50)
-    numberplate=models.CharField(max_length=50)
-    seats=models.IntegerField()
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
-    
 
-    def __str__(self):
-        return self.Brand
 
 class Location(models.Model):
     Longitude=models.IntegerField()
@@ -28,7 +19,6 @@ class Destination(models.Model):
 class Driver_profile(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     name=models.CharField(max_length=50)
-    car=models.ForeignKey(Car)
     # pickup=models.ForeignKey(Location)
     driver_destination=models.ForeignKey(Destination)
     phonenumber=models.IntegerField()
@@ -36,5 +26,16 @@ class Driver_profile(models.Model):
 
     def __str__(self):
         return self.name
+
+# Create your models here.
+class Car(models.Model):
+    Brand=models.CharField(max_length=50)
+    numberplate=models.CharField(max_length=50)
+    seats=models.IntegerField()
+    owner=models.ForeignKey(Driver_profile)
+    
+
+    def __str__(self):
+        return self.Brand
 
 
