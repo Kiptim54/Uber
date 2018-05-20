@@ -1,7 +1,8 @@
-{% extends 'driver/base.html' %}
+{% extends 'customer/base.html' %}
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
+{{block.super}} 
 {% block styles %}
 {% bootstrap_css%}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
