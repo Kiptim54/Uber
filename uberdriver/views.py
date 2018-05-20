@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -82,6 +82,17 @@ def display_destinations(request):
     driver=request.user.id
     schedules=Destination.display_destinations(driver)
     return render(request, 'driver/schedule.html', {"schedules":schedules, "title":title})
+
+def driver_profile(request, id):
+    '''
+    function to display the driver profile and their past rides
+    '''
+    title="Ride | Profile"
+    id=get_object_or_404(Driver_profile, id=id)
+    print(id)
+    driver=Driver_profile.objects.get(name=id)
+    print(driver)
+    return render(request, 'driver/profile.html', {"title":title, "driver":driver})
 
 
 # def sign_up(request):

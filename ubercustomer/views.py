@@ -26,3 +26,4 @@ def view_driverprofile(request):
     function for customer to see the driver's profile
     '''
     title='Ride | Profile '
+    Driver_profile.objects.get()

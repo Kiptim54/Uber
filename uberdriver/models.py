@@ -37,6 +37,10 @@ class Driver_profile(models.Model):
     def profile_save(self):
         self.save()
 
+    # @classmethod
+    # def filter_byid(cls):
+
+
     def __str__(self):
         return self.name
 

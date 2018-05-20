@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <h5 class="card-title"> {{ride.destination}}</h5>
                         <p class="card-text"> {{ride.leaving_time}}.</p>
-                        <a href="#" class="btn btn-primary">
+                        <a href="{% url 'driver_profile' ride.driver.id %}" class="btn btn-primary">
                             {{ride.driver}} {{ride.driver.car}}</a>
                     </div>
                     

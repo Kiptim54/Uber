@@ -1,0 +1,30 @@
+{% extends 'driver/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+{% block styles %}
+{% bootstrap_css%}
+<link rel="stylesheet" href="#">
+
+{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Name:{{ driver.name}}</h3>
+            <p>Car:{{ driver.phonenumber}}</p>
+            <p>Phone Number: {{ driver.car}}</p>
+            <p>Car seats: {{driver.car.seats}}</p>
+        </div>
+    </div>
+</div>
+<div class="driver_details">
+
+</div>
+
+
+
+
+
+
+{% endblock %}
