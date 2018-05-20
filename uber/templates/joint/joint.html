@@ -1,3 +1,14 @@
-<h1>Welcome {{user.username}}! Are you a driver or a passenger?</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block content %}
+{% block styles %}
+{% bootstrap_css%}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+{% endblock %}
+<h2>Welcome {{user.username}}! Are you a driver or a passenger?</h2>
 <button><a href="/driver/profile/car"> Driver </a></button>
 <button><a href="/customer"> Passenger </a></button>
+{% endblock %}
+
