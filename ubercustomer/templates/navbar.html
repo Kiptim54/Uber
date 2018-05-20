@@ -1,7 +1,33 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand pull-right">Ride | Ke</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    nav li{
+      text-decoration-style: none;
+      list-style-type: none;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand pull-right" href="{% url 'joint' %}">Ride | Ke</a>
+           
+           
+              <a class="pull-right" href="#">Driver</a>
+          
+            <li class="nav-item">
+              <a class="pull-right" href="#">Passenger</a>
+            </li>
+          </ul>
         <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn" type="submit">Search</button>
+        
         </form>
       </nav>
+</body>
+</html>
