@@ -1,14 +1,24 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load bootstrap3 %}
-{% block content %}
-{% block styles %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% load bootstrap3 %} 
+{% block content %} 
+{% block styles %} 
 {% bootstrap_css%}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}"> {% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="welcome_message">
+                    <h2>Welcome {{user.username}}! Are you a driver or a passenger?</h1>
+                        <div class="welcome_button">
+                        <a href="{% url 'home' %}"><input type="submit"  value="Passenger" class="btn" method='get'></a>
+                        <a href="{% url 'home_driver' %}"><input type="submit"  value="Driver" class="btn" method='get'></a>
+                    </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}
-<h2>Welcome {{user.username}}! Are you a driver or a passenger?</h2>
-<button><a href="/driver/profile/car"> Driver </a></button>
-<button><a href="/customer"> Passenger </a></button>
-{% endblock %}
-

@@ -1,4 +1,4 @@
-h2{
+.hello{
     position:absolute;
     left:40%;
     top:35%;
@@ -15,3 +15,28 @@ h2{
     left:41%;
     top:46%;
 }
+#welcome_message{
+    margin-left:17%;
+    position: relative;
+    top:50%;
+    
+    
+}
+.welcome_button{
+    position:relative;
+    left:27%;
+    
+    
+    
+}
+input{
+    background:black;
+    color:white;
+    margin-left:3%;
+    padding:4%;
+}
+input:hover{
+    background:white;
+    color:pink;
+}
+
