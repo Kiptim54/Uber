@@ -20,3 +20,9 @@ def display_rides(request):
     rides=Destination.objects.all()
     print(rides)
     return render(request, 'customer/all_rides.html', {"title":title, "rides":rides})
+
+def view_driverprofile(request):
+    '''
+    function for customer to see the driver's profile
+    '''
+    title='Ride | Profile '
