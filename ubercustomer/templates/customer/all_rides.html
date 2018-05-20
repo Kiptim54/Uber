@@ -1,0 +1,35 @@
+{% extends 'driver/base.html' %}
+ {% load bootstrap3 %} 
+{% load static %} 
+{% block content %}
+
+ {% block styles %} 
+ {% bootstrap_css%}
+<link rel="stylesheet" href="{% static '#' %}"> 
+{% endblock %}
+
+
+<div class="all_rides">
+    <div class="container">
+            <h2 class="text-center"> Available Rides </h2>
+            <hr>
+        <div class="row">
+            {% for ride in rides %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ride.destination}}</h5>
+                        <p class="card-text"> {{ride.leaving_time}}.</p>
+                        <a href="#" class="btn btn-primary">
+                            {{ride.driver}}</a>
+                    </div>
+                    
+                </div>
+              
+            </div>
+            {% endfor %}
+        </div>
+     
+
+    </div>
+    {% endblock %}
