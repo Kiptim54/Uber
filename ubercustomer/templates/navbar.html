@@ -15,13 +15,19 @@
 <body>
     <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand pull-right" href="{% url 'joint' %}">Ride | Ke</a>
-           
-           
-              <a class="pull-right" href="#">Driver</a>
-          
+            {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="pull-right" href="#">Passenger</a>
+              <a class="pull-right" href="{% url 'home' %}">Passenger</a>
             </li>
+            <li class="nav-item">
+              <a class="pull-right" href="{% url 'home_driver' %}">Driver</a>
+            </li>
+              <a class="pull-right" href="/logout/">Logout</a>
+            {% else %}
+            <a class="pull-right" href="/accounts/login/">Login</a>
+           
+
+            {% endif %}
           </ul>
         <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

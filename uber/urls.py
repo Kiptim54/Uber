@@ -24,6 +24,6 @@ urlpatterns = [
     url(r'^driver/', include('uberdriver.urls')),
     url(r'^$', uber_views.welcome_user, name="joint"),
     url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^logout/$', views.logout, {"next_page": '/home'}),
+    url(r'^logout/$', views.logout, {"next_page": '/'}),
     
 ]

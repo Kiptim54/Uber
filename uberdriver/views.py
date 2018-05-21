@@ -16,7 +16,7 @@ def home_page(request):
     function for the landing page of the driver
     '''
     return render( request, 'driver/index.html', {"title":title})
-
+@login_required
 def create_profile(request):
     current_user = request.user
     current_user.id=request.user.id
@@ -34,7 +34,7 @@ def create_profile(request):
     else:
         form =Create_Profile()
     return render(request, 'driver/profile_edit.html', {"form": form})
-
+@login_required
 def car_profile(request):
     current_user = request.user
     print(current_user)
@@ -49,7 +49,7 @@ def car_profile(request):
     else:
         form =Car_profile()
     return render(request, 'driver/car_edit.html', {"form": form})
-    
+@login_required   
 def create_destination(request):
     '''
     function used by the driver to set their destination
@@ -75,14 +75,14 @@ def create_destination(request):
         form=Destination_form()
     return render(request, 'driver/destination.html', {"form":form, "title":title})
 
-
+@login_required
 def display_destinations(request):
     title="Ride | Destinations "
     current_user=request.user
     driver=request.user.id
     schedules=Destination.display_destinations(driver)
     return render(request, 'driver/schedule.html', {"schedules":schedules, "title":title})
-
+@login_required
 def driver_profile(request, id):
     '''
     function to display the driver profile and their past rides
