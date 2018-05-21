@@ -123,6 +123,12 @@ USE_L10N = True
 USE_TZ = True
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
+#login redirect
+LOGIN_REDIRECT_URL='/'
+
+
+#trying email confirmation signup
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 
@@ -136,6 +142,8 @@ os.path.join(BASE_DIR, "static"),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE ='whitenoise.django.GzipManifestStaticFilesStorage'
+
+
 
 #email configuration
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')

@@ -6,10 +6,11 @@ from .models import Driver_profile, Car, Destination
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    phonenumber=forms.IntegerField()
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', )
+        fields = ('username', 'email','phonenumber','password1', 'password2', )
 
 class Create_Profile(forms.ModelForm):
     class Meta:
