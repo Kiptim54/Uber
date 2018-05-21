@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from uberdriver.models import Driver_profile, Destination, Car,Location
@@ -18,13 +18,20 @@ def display_rides(request):
     function that displays all available rides to the customer
     '''
     title="Rides | Available rides"
+    
     rides=Destination.objects.all()
     print(rides)
     return render(request, 'customer/all_rides.html', {"title":title, "rides":rides})
-@login_required
-def view_driverprofile(request):
+
+def book_ride(request, id):
     '''
-    function for customer to see the driver's profile
+    function for a passenger to book a ride
     '''
-    title='Ride | Profile '
-    Driver_profile.objects.get()
+    current_user=request.user 
+    id=get_object_or_404(Destination, serial_number=id)
+    print(id)
+    destination=Destination.objects.get(serial_number=id)
+    print(destination)
+    destination.bookers.add(current_user)
+    destination.save()
+    return redirect ('available_rides')

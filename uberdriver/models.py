@@ -16,16 +16,17 @@ class Location(models.Model):
 # Create your models here.
 class Car(models.Model):
     Brand=models.CharField(max_length=50)
-    numberplate=models.CharField(max_length=50)
+    numberplate=models.CharField(max_length=50, unique=True)
     seats=models.IntegerField()
     owner=models.OneToOneField(User,on_delete=models.CASCADE)
+   
 
     def save_car(self):
         return self.save()
     
 
     def __str__(self):
-        return self.Brand
+        return self.numberplate
 
 
 class Driver_profile(models.Model):
@@ -46,17 +47,18 @@ class Driver_profile(models.Model):
     def profile_save(self):
         self.save()
 
-    # @classmethod
-    # def filter_byid(cls):
+  
 
 
     def __str__(self):
         return self.name
 
 class Destination(models.Model):
+    serial_number = models.AutoField(primary_key=True)
     destination=models.CharField(max_length=50)
     leaving_time=models.DateTimeField()
     driver=models.ForeignKey(Driver_profile)
+    bookers=models.ManyToManyField(User, blank=True, related_name='passgers')
 
     def save_destination(self):
         self.save()
@@ -66,8 +68,8 @@ class Destination(models.Model):
         destinations=cls.objects.all().filter(driver__user=driver)
         return destinations
 
-    def __str__(self):
-        return self.destination
+    def __int__(self):
+        return self.serial_number
 
 
 

@@ -104,7 +104,7 @@ def driver_profile(request, id):
     print(id)
     driver=Driver_profile.objects.get(name=id)
     print(driver)
-    return render(request, 'driver/profile.html', {"title":title, "driver":driver})
+    return render(request, 'driver/profile.html', {"title":title, "driver":driver, "id":id})
 
 
 # def signup(request):

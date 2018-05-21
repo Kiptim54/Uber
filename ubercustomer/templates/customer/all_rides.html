@@ -23,10 +23,10 @@
                         <p class="card-text">  Driver: {{ride.driver}}.</p>
                         <p class="card-text"> Car: {{ride.driver.car}}.</p>
                         <p class="card-text"> Total Seats: {{ride.driver.car.seats}}</p>
-                        <p class="card-text"> Available Seats: {{ride.driver.car.seats}}</p>
+                        <p class="card-text"> Booked Seats: {{ride.bookers.count}}</p>
                         <a href="{% url 'driver_profile' ride.driver.id %}" class="btn btn-primary">
                            see Driver's profile </a>
-                        <a href="{% url 'driver_profile' ride.driver.id %}" class="btn btn-primary">
+                        <a href="{% url 'book_ride' ride.driver.id %}" class="btn btn-primary">
                             Book this ride </a>
                     </div>
                     

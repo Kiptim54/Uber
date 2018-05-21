@@ -14,9 +14,12 @@
             {% for schedule in schedules %}
 
 
-            <h2>{{schedule.destination }}</h2>
-            <p>{{schedule.leaving_time }}</p>
-            <p>{{schedule.driver.name }}</p>
+            <h2>Destination:{{schedule.destination }}</h2>
+            <p>Leaving Time: {{schedule.leaving_time }}</p>
+            <p>Name: {{schedule.driver.name }}</p>
+            <p>Number of seats: {{schedule.driver.car.seats }}</p>
+            <p>Booked Seats: {{schedule.driver.car.bookers.count }}</p>
+
             
         </div>
         {% endfor%}
