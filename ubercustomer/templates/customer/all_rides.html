@@ -18,13 +18,18 @@
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"> {{ride.destination}}</h5>
-                        <p class="card-text"> {{ride.leaving_time}}.</p>
+                        <h5 class="card-title"> Destination: {{ride.destination}}</h5>
+                        <p class="card-text"> Leaving Time:{{ride.leaving_time}}.</p>
+                        <p class="card-text">  Driver: {{ride.driver}}.</p>
+                        <p class="card-text"> Car: {{ride.driver.car}}.</p>
+                        <p class="card-text"> Total Seats: {{ride.driver.car.seats}}</p>
+                        <p class="card-text"> Available Seats: {{ride.driver.car.seats}}</p>
                         <a href="{% url 'driver_profile' ride.driver.id %}" class="btn btn-primary">
-                            {{ride.driver}} {{ride.driver.car}}</a>
+                           see Driver's profile </a>
                     </div>
                     
                 </div>
+                <hr>
               
             </div>
             {% endfor %}
